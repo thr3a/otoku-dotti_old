@@ -32,6 +32,16 @@ export default function App (props: AppProps) {
                 }
               })
             },
+            NumberInput: {
+              styles: (theme) => ({
+                label: {
+                  fontWeight: 'bold'
+                },
+                root: {
+                  marginBottom: theme.spacing.xs
+                }
+              })
+            },
             RadioGroup: {
               styles: (theme) => ({
                 label: {

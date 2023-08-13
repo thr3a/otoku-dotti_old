@@ -5,8 +5,8 @@ import { IconWeight } from '@tabler/icons-react';
 
 const useStyles = createStyles((theme) => ({
   circle: {
-    width: '100px',
-    height: '100px',
+    width: '80px',
+    height: '80px',
     borderRadius: '50%',
     background: 'red',
     display: 'flex',
@@ -33,17 +33,17 @@ export const WinResult: React.FC<ResultProps> = ({ diff, tanka }) => {
 
   return (
     <Box>
-      <Center>
+      <Center fz='24px'>
         @<Text component='span' fw='bold'>{tanka}</Text>
       </Center>
-      <span>
-      こっちのほうが<Text component='span' fw='bold'>{diff}円</Text>お得!
-      </span>
       <Center>
         <Box className={classes.circle}>
           <span className={classes.string}>得</span>
         </Box>
       </Center>
+      <span>
+      こっちのほうが<Text component='span' fw='bold'>{diff}円</Text>お得!
+      </span>
     </Box>
 
   );
@@ -51,7 +51,7 @@ export const WinResult: React.FC<ResultProps> = ({ diff, tanka }) => {
 
 export const LoseResult: React.FC<ResultProps> = ({ diff, tanka }) => {
   return (
-    <Center>
+    <Center fz='24px'>
       @<Text component='span' fw='bold'>{tanka}</Text>
     </Center>
   );

@@ -10,11 +10,18 @@ export const Item: React.FC<ItemProps> = ({ index }) => {
 
   return (
     <Box>
-      <TextInput label="価格" withAsterisk {...form.getInputProps(`price${index}`)}
+      <TextInput label={`商品${index}の価格`} withAsterisk {...form.getInputProps(`price${index}`)}
         rightSection="円"
       />
-      <NumberInput label="容量(g,m,個,枚)" withAsterisk {...form.getInputProps(`capacity${index}`)} />
-      <NumberInput label="パック数" description="任意" {...form.getInputProps(`count${index}`)} />
+      <TextInput label="容量(g,m,個,枚)" withAsterisk {...form.getInputProps(`capacity${index}`)} />
+      <TextInput label="パック数(任意)" {...form.getInputProps(`count${index}`)}
+        styles={(theme) => ({
+          label: {
+            fontWeight: 'normal'
+          }
+        })
+        }
+      />
     </Box>
   );
 };

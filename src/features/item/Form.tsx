@@ -1,7 +1,7 @@
-import { Title, NumberInput, Group, Button, Box, Grid, Center } from '@mantine/core';
-import { ItemFormProvider, useItemForm, useItemFormContext } from '@/features/item/ItemContext';
+import { Group, Button, Box, Grid } from '@mantine/core';
+import { ItemFormProvider, useItemForm } from '@/features/item/ItemContext';
 import { Item } from '@/features/item/Item';
-import { useForm, isNotEmpty, isEmail, isInRange, hasLength, matches } from '@mantine/form';
+import { isNotEmpty } from '@mantine/form';
 import { ceilDecimal } from '@/features/common/utils';
 import { WinResult, LoseResult } from '@/features/item/Result';
 
@@ -12,42 +12,45 @@ export const Form = (): JSX.Element => {
       priceB: 1763,
       capacityA: 1,
       capacityB: 5,
-      countA: 0,
-      countB: 0,
-      tankaA: 0,
-      tankaB: 0
       // priceA: undefined,
       // priceB: undefined,
       // capacityA: undefined,
       // capacityB: undefined,
-      // countA: undefined,
-      // countB: undefined,
+      tankaA: 0,
+      tankaB: 0
     },
 
     validate: {
-      // priceA: isNotEmpty('価格は必須項目です')
-      // age: isInRange({ min: 18, max: 99 }, 'You must be 18-99 years old to register')
+      priceA: isNotEmpty(),
+      priceB: isNotEmpty(),
+      capacityA: isNotEmpty(),
+      capacityB: isNotEmpty()
     }
+
   });
 
   const handleSubmit = (): void => {
     console.log(form.values);
     form.setValues({
-      tankaA: ceilDecimal(form.values.priceA / form.values.capacityA, 1),
-      tankaB: ceilDecimal(form.values.priceB / form.values.capacityB, 1)
+      tankaA: ceilDecimal((form.values.priceA ?? 0) / (form.values.capacityA ?? 1), 1),
+      tankaB: ceilDecimal((form.values.priceB ?? 0) / (form.values.capacityB ?? 1), 1)
     });
   };
 
   const diff = (): number => {
+    const count = Math.max((form.values.capacityA ?? 0), (form.values.capacityB ?? 0));
     if (betterItem() === 'A') {
-      return ceilDecimal(form.values.tankaA - form.values.tankaB, 1);
+      return ceilDecimal(form.values.tankaB - form.values.tankaA, 1) * count;
     } else {
-      return ceilDecimal(form.values.tankaB - form.values.tankaA, 1);
+      return ceilDecimal(form.values.tankaA - form.values.tankaB, 1) * count;
     }
   };
 
   const betterItem = (): string => {
-    if (form.values.tankaA > form.values.tankaB) {
+    if (form.values.tankaA === 0 && form.values.tankaB === 0) {
+      return '';
+    }
+    if (form.values.tankaA < form.values.tankaB) {
       return 'A';
     } else {
       return 'B';
@@ -65,10 +68,10 @@ export const Form = (): JSX.Element => {
             <Item index='B'></Item>
           </Grid.Col>
         </Grid>
-        <Group position="center" mt="md">
+        <Group position="center">
           <Button type="submit">計算!</Button>
         </Group>
-        <Grid mt={'md'}>
+        <Grid>
           <Grid.Col span={6}>
             {betterItem() === 'A' &&
               <WinResult diff={diff()} tanka={form.values.tankaA}></WinResult>

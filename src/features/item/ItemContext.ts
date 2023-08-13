@@ -1,12 +1,12 @@
 import { createFormContext } from '@mantine/form';
 
 type ItemFormProps = {
-  priceA: number
-  capacityA: number
-  countA: number
-  priceB: number
-  capacityB: number
-  countB: number
+  priceA: number | undefined
+  priceB: number | undefined
+  capacityA: number | undefined
+  capacityB: number | undefined
+  countA?: number
+  countB?: number
   tankaA: number
   tankaB: number
 };
