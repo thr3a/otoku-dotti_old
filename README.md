@@ -1,3 +1,8 @@
+```
+export const Post = (): JSX.Element => {}
+
+export const Result: React.FC<ResultProps> = ({ price }) => {
+```
 # 利用方法
 
 ```

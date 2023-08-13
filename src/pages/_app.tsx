@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { MantineProvider, Container } from '@mantine/core';
 import { Header } from '../features/common/components/Header';
 
-export default function App (props: AppProps) {
+export default function App (props: AppProps): JSX.Element {
   const { Component, pageProps } = props;
 
   return (

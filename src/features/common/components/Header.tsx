@@ -1,4 +1,4 @@
-import { Title, Center, Text } from '@mantine/core';
+import { Title } from '@mantine/core';
 
 export const Header = (): JSX.Element => {
   return (
@@ -12,7 +12,6 @@ export const Header = (): JSX.Element => {
         color="dimmed"
         order={5}
         sx={(theme) => ({
-          // marginTop: theme.spacing.md,
           marginBottom: theme.spacing.md
         })}
       >物価上昇を耐え抜け</Title>
