@@ -1,0 +1,39 @@
+{
+  "name": "nextjs-template",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "NODE_OPTIONS='--inspect' next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "export": "next export",
+    "serve": "python -m http.server -d out",
+    "node-server": "node server.js"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/server": "^11.11.0",
+    "@mantine/core": "^6.0.19",
+    "@mantine/form": "^6.0.19",
+    "@mantine/hooks": "^6.0.19",
+    "@mantine/next": "^6.0.19",
+    "@tabler/icons-react": "^2.30.0",
+    "next": "13.4.13",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "sass": "^1.65.1",
+    "swr": "^2.2.1",
+    "ts-node": "^10.9.1",
+    "zod": "^3.21.4"
+  },
+  "devDependencies": {
+    "@types/node": "20.4.10",
+    "@types/react": "18.2.20",
+    "@types/react-dom": "18.2.7",
+    "eslint": "8.47.0",
+    "eslint-config-next": "13.4.13",
+    "typescript": "5.0.4"
+  }
+}
