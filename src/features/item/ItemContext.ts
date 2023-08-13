@@ -5,8 +5,8 @@ type ItemFormProps = {
   priceB: number | undefined
   capacityA: number | undefined
   capacityB: number | undefined
-  countA?: number
-  countB?: number
+  countA: number | undefined
+  countB: number | undefined
   tankaA: number
   tankaB: number
 };

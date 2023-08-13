@@ -16,6 +16,8 @@ export const Form = (): JSX.Element => {
       // priceB: undefined,
       // capacityA: undefined,
       // capacityB: undefined,
+      countA: undefined,
+      countB: undefined,
       tankaA: 0,
       tankaB: 0
     },
@@ -31,9 +33,12 @@ export const Form = (): JSX.Element => {
 
   const handleSubmit = (): void => {
     console.log(form.values);
+    const tankaA = (form.values.priceA ?? 0) / (form.values.capacityA ?? 1) / (form.values.countA ?? 1);
+    const tankaB = (form.values.priceB ?? 0) / (form.values.capacityB ?? 1) / (form.values.countB ?? 1);
+
     form.setValues({
-      tankaA: ceilDecimal((form.values.priceA ?? 0) / (form.values.capacityA ?? 1), 1),
-      tankaB: ceilDecimal((form.values.priceB ?? 0) / (form.values.capacityB ?? 1), 1)
+      tankaA: ceilDecimal(tankaA, 1),
+      tankaB: ceilDecimal(tankaB, 1)
     });
   };
 

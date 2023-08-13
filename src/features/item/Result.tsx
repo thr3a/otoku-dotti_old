@@ -1,7 +1,4 @@
-import { TextInput, Title, NumberInput, Group, Button, Box, Center, Text, createStyles, getStylesRef, rem } from '@mantine/core';
-import { useItemFormContext } from '@/features/item/ItemContext';
-import React from 'react';
-import { IconWeight } from '@tabler/icons-react';
+import { Box, Center, Text, createStyles } from '@mantine/core';
 
 const useStyles = createStyles((theme) => ({
   circle: {
