@@ -1,10 +1,9 @@
-import { AppProps } from 'next/app';
+import { type AppProps } from 'next/app';
 import Head from 'next/head';
-import { MantineProvider } from '@mantine/core';
+import { MantineProvider, Container } from '@mantine/core';
 import { Header } from '../features/common/components/Header';
-import { Container } from '@mantine/core';
 
-export default function App(props: AppProps) {
+export default function App (props: AppProps) {
   const { Component, pageProps } = props;
 
   return (
@@ -26,10 +25,10 @@ export default function App(props: AppProps) {
             TextInput: {
               styles: (theme) => ({
                 label: {
-                  fontWeight: 'bold',
+                  fontWeight: 'bold'
                 },
                 root: {
-                  marginBottom: theme.spacing.xs,
+                  marginBottom: theme.spacing.xs
                 }
               })
             },
@@ -57,7 +56,7 @@ export default function App(props: AppProps) {
                 },
                 day: {
                   height: 30
-                },
+                }
               })
             }
           }
@@ -65,7 +64,7 @@ export default function App(props: AppProps) {
       >
         <Container
           sx={(theme) => ({
-            paddingBottom: theme.spacing.xl,
+            paddingBottom: theme.spacing.xl
           })}
         >
           <Header></Header>
