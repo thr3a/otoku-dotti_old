@@ -8,16 +8,23 @@ import { WinResult, LoseResult } from '@/features/item/Result';
 export const Form = (): JSX.Element => {
   const form = useItemForm({
     initialValues: {
-      priceA: 388,
-      priceB: 1763,
-      capacityA: 1,
-      capacityB: 5,
-      // priceA: undefined,
-      // priceB: undefined,
-      // capacityA: undefined,
-      // capacityB: undefined,
-      countA: undefined,
-      countB: undefined,
+      // priceA: 388,
+      // priceB: 1763,
+      // capacityA: 1,
+      // capacityB: 5,
+      // priceA: 0,
+      // priceB: 0,
+      // capacityA: 0,
+      // capacityB: 0,
+      // countA: 0,
+      // countB: 0,
+      priceA: 849,
+      priceB: 3762,
+      capacityA: 200,
+      capacityB: 160,
+      countA: 5,
+      countB: 60,
+
       tankaA: 0,
       tankaB: 0
     },
@@ -33,8 +40,8 @@ export const Form = (): JSX.Element => {
 
   const handleSubmit = (): void => {
     console.log(form.values);
-    const tankaA = (form.values.priceA ?? 0) / (form.values.capacityA ?? 1) / (form.values.countA ?? 1);
-    const tankaB = (form.values.priceB ?? 0) / (form.values.capacityB ?? 1) / (form.values.countB ?? 1);
+    const tankaA = form.values.priceA / form.values.capacityA / form.values.countA;
+    const tankaB = form.values.priceB / form.values.capacityB / form.values.countB;
 
     form.setValues({
       tankaA: ceilDecimal(tankaA, 1),
@@ -43,7 +50,7 @@ export const Form = (): JSX.Element => {
   };
 
   const diff = (): number => {
-    const count = Math.max((form.values.capacityA ?? 0), (form.values.capacityB ?? 0));
+    const count = Math.max(form.values.capacityA * form.values.countA, form.values.capacityB * form.values.countB);
     if (betterItem() === 'A') {
       return ceilDecimal(form.values.tankaB - form.values.tankaA, 1) * count;
     } else {
