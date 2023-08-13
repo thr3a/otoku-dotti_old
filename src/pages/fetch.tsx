@@ -15,7 +15,7 @@ const Posts = () => {
 
   if (error) return <div>Failed to load</div>;
   if (!data) return <div>Loading...</div>;
-  
+
   return (
     <>
       { data.map((repo: RepositoryProps) => {
