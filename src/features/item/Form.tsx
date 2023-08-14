@@ -2,12 +2,16 @@ import { Group, Button, Box, Grid } from '@mantine/core';
 import { ItemFormProvider, useItemForm } from '@/features/item/ItemContext';
 import { Item } from '@/features/item/Item';
 import { isNotEmpty } from '@mantine/form';
-import { ceilDecimal } from '@/features/common/utils';
+import { ceilDecimal } from 'decimal-utils';
 import { WinResult, LoseResult } from '@/features/item/Result';
 
 export const Form = (): JSX.Element => {
   const form = useItemForm({
     initialValues: {
+      // priceA: 300,
+      // priceB: 550,
+      // capacityA: 300,
+      // capacityB: 1000,
       priceA: 0,
       priceB: 0,
       capacityA: 0,
@@ -29,8 +33,8 @@ export const Form = (): JSX.Element => {
 
   const handleSubmit = (): void => {
     console.log(form.values);
-    const tankaA = form.values.priceA / form.values.capacityA / form.values.countA;
-    const tankaB = form.values.priceB / form.values.capacityB / form.values.countB;
+    const tankaA = form.values.priceA / form.values.capacityA / Math.max(form.values.countA, 1);
+    const tankaB = form.values.priceB / form.values.capacityB / Math.max(form.values.countB, 1);
 
     form.setValues({
       tankaA: ceilDecimal(tankaA, 1),
@@ -44,7 +48,7 @@ export const Form = (): JSX.Element => {
   };
 
   const diff = (): number => {
-    const count = Math.max(form.values.capacityA * form.values.countA, form.values.capacityB * form.values.countB);
+    const count = Math.max(form.values.capacityA * Math.max(form.values.countA, 1), form.values.capacityB * Math.max(form.values.countB, 1));
     if (betterItem() === 'A') {
       return ceilDecimal(form.values.tankaB - form.values.tankaA, 1) * count;
     } else {
