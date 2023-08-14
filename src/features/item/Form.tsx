@@ -8,23 +8,12 @@ import { WinResult, LoseResult } from '@/features/item/Result';
 export const Form = (): JSX.Element => {
   const form = useItemForm({
     initialValues: {
-      // priceA: 388,
-      // priceB: 1763,
-      // capacityA: 1,
-      // capacityB: 5,
-      // priceA: 0,
-      // priceB: 0,
-      // capacityA: 0,
-      // capacityB: 0,
-      // countA: 0,
-      // countB: 0,
-      priceA: 849,
-      priceB: 3762,
-      capacityA: 200,
-      capacityB: 160,
-      countA: 5,
-      countB: 60,
-
+      priceA: 0,
+      priceB: 0,
+      capacityA: 0,
+      capacityB: 0,
+      countA: 0,
+      countB: 0,
       tankaA: 0,
       tankaB: 0
     },
