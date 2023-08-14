@@ -49,6 +49,11 @@ export const Form = (): JSX.Element => {
     });
   };
 
+  const handleReset = (): void => {
+    form.reset();
+    form.clearErrors();
+  };
+
   const diff = (): number => {
     const count = Math.max(form.values.capacityA * form.values.countA, form.values.capacityB * form.values.countB);
     if (betterItem() === 'A') {
@@ -80,8 +85,9 @@ export const Form = (): JSX.Element => {
             <Item index='B'></Item>
           </Grid.Col>
         </Grid>
-        <Group position="center">
+        <Group position="right">
           <Button type="submit">計算!</Button>
+          <Button type="button" color='gray' onClick={handleReset} >クリア</Button>
         </Group>
         <Grid>
           <Grid.Col span={6}>
